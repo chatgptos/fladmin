@@ -1,17 +1,17 @@
 {
-    "name": "karsonzhang/fastadmin",
-    "description": "the fastest admin framework",
+    "name": "jack/fladmin",
+    "description": "the fl admin framework",
     "type": "project",
     "keywords": [
         "fastadmin",
         "thinkphp"
     ],
-    "homepage": "https://www.fastadmin.net/",
+    "homepage": "https://www.fladmin.net/",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "Karson",
-            "email": "karson@fastadmin.net"
+            "name": "jack",
+            "email": "1276789849@qq.com"
         }
     ],
     "require": {
@@ -38,7 +38,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://gitee.com/fastadminnet/framework.git"
+            "url": "https://github.com/phalconer/fladmin.git"
         }
     ]
 }
