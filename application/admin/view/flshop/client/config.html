@@ -1,0 +1,1174 @@
+<div class="panel panel-default panel-intro">
+	<div class="panel-heading">
+		<div class="panel-lead"><em>系统设置</em>全局配置实时同步客户端，用户重启客户端后生效</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#system" data-toggle="tab">系统配置</a></li>
+			<li><a href="#redis" data-toggle="tab">Redis配置</a></li>
+			<li><a href="#withdraw" data-toggle="tab">提现配置</a></li>
+			<li><a href="#order" data-toggle="tab">订单配置</a></li>
+			<li><a href="#return" data-toggle="tab">退货配置</a></li>
+			<li><a href="#find" data-toggle="tab">发现页管理</a></li>
+			<li><a href="#live" data-toggle="tab">阿里直播</a></li>
+			<li><a href="#video" data-toggle="tab">阿里点播</a></li>
+			<li><a href="#im" data-toggle="tab">IM即时通讯</a></li>
+			<li><a href="#kuaidi" data-toggle="tab">快递100推送</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade active in" id="system">
+				<div class="widget-body no-padding">
+					<form id="ini-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>新店铺审核</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[config][store_audit]',
+												$flshop.config.store_audit, ['color'=>'success', 'yes'=>'Y',
+												'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>第三方支付退款原路返回</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[config][refund_switch]',
+												$flshop.config.refund_switch, ['color'=>'success', 'yes'=>'Y',
+												'no'=>'N'])}
+												<div style="margin-top:5px;">
+													<a href="javascript:" data-toggle="tooltip" data-title="此功能会直接调用第三方支付退款API接口，会直接从第三方退款用户，退款后不可逆，不建议开启此功能，建议退款至余额！！"> <i class="fa fa-info-circle"></i> 开启注意事项（不建议开启）</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>帮助中心类目CID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][help_category]',
+												$flshop.config.help_category,
+												['data-rule'=>'required','data-tip'=>'请填写帮助中心类目ID','placeholder'=>'类目ID，客户端读取帮助中心类目列表'])}
+												<div style="margin-top:5px;">
+													<a href="javascript:" data-toggle="tooltip" data-title="CID为后台【内容管理】-【分类管理】类目的ID"> 
+														<i class="fa fa-info-circle"></i> CID要如何获取？
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>头条新闻类目CID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][new_category]', $flshop.config.new_category,
+												['data-rule'=>'required','data-tip'=>'请填写头条新闻类目ID','placeholder'=>'类目ID，客户端读取头条新闻类目列表'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>系统消息类目CID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][sys_category]', $flshop.config.sys_category,
+												['data-rule'=>'required','data-tip'=>'请填写系统消息类目ID','placeholder'=>'类目ID，客户端读取系统消息类目列表'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>用户协议文章ID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][user_agreement]',
+												$flshop.config.user_agreement,
+												['data-rule'=>'required','data-tip'=>'请填写用户协议文章ID','placeholder'=>'用户协议的文章ID'])}
+												<div style="margin-top:5px;">
+													<a href="javascript:" data-toggle="tooltip" data-title="CID为后台【内容管理】-【文章列表】文章的ID"> 
+														<i class="fa fa-info-circle"></i> 文章ID要如何获取？
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>隐私保护文章ID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][privacy_protection]',
+												$flshop.config.privacy_protection,
+												['data-rule'=>'required','data-tip'=>'请填写隐私保护文章ID','placeholder'=>'隐私保护文章ID'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>客服电话</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][tel_phone]', $flshop.config.tel_phone,
+												['data-rule'=>'required','data-tip'=>'请填写客服电话','placeholder'=>'电话、手机号'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>工作时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][working_hours]',
+												$flshop.config.working_hours,
+												['data-rule'=>'required','data-tip'=>'请填写工作时间','placeholder'=>'09:00~22:00'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<!-- 1.1.2升级 -->
+								<tr>
+									<td>商家后台文档地址</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][shop_document]',
+												$flshop.config.shop_document,
+												['data-tip'=>'商家后台文档地址','placeholder'=>'https://doc.flshop.com'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>商家后台QQ群</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][shop_qun]',
+												$flshop.config.shop_qun,
+												['data-tip'=>'商家后台QQ交流群','placeholder'=>'http://shang.qq.com/wpa/qunwpa?idkey=7a1**********a4'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>小程序ID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][mp_weixin_id]', $flshop.config.mp_weixin_id,
+												['data-rule'=>'required','data-tip'=>'请填写小程序推广ID','placeholder'=>'小程序ID'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="redis">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Redis主机地址</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[redis][host]', $flshop.redis.host,
+												['data-rule'=>'required','data-tip'=>'请填写Redis主机地址，在服务器安装一般填写127.0.0.1','placeholder'=>'127.0.0.1'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/997.html" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置Redis主机地址?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Redis服务端口</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[redis][port]', $flshop.redis.port,
+												['data-rule'=>'required','data-tip'=>'请填写Redis服务端口，在服务器安装一般填写6379','placeholder'=>'6379'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/997.html" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置Redis服务端口?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Redis密码 (一般为空)</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[redis][password]', $flshop.redis.password,
+												['data-tip'=>'通常Redis没有密码，如果是第三方Redis请查看第三方Redis密码填写此处'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>操作库</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[redis][select]', $flshop.redis.select,
+												['data-rule'=>'required','data-tip'=>'请填写Redis操作库','placeholder'=>'0'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>超时时间(秒)</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[redis][timeout]', $flshop.redis.timeout,
+												['data-rule'=>'required','data-tip'=>'请填写Redis超时时间(秒)，设置为0则默认超时时间','placeholder'=>'0'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>是否长连接</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[redis][persistent]', $flshop.redis.persistent,
+												['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="withdraw">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>是否开启提现</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[withdraw][state]', $flshop.withdraw.state,
+												['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>最低提现金额</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[withdraw][minmoney]', $flshop.withdraw.minmoney,
+												['data-rule'=>'required','data-tip'=>'设置0则不限制提现金额','placeholder'=>'设置0则不限制提现金额'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>每月可提现次数</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[withdraw][monthlimit]', $flshop.withdraw.monthlimit,
+												['data-rule'=>'required','data-tip'=>'每月可提现次数，设置0不限提现次数','placeholder'=>'每月可提现次数'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>提现手续费(‰)</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[withdraw][servicefee]', $flshop.withdraw.servicefee,
+												['data-rule'=>'required','data-tip'=>'每笔提现扣除手续费千分之几？','placeholder'=>'手续费‰'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="order">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数（天）</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>取消未支付时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][cancel]', $flshop.order.cancel,
+												['data-rule'=>'required','data-tip'=>'几天后取消未支付订单','placeholder'=>'订单下单未付款，n天后自动关闭，设置0天不自动关闭'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>自动收货时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][receiving]', $flshop.order.receiving,
+												['data-rule'=>'required','data-tip'=>'订单提交后几天自动收货','placeholder'=>'如果在期间未确认收货，系统自动完成收货，设置0天不自动收货'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>自动评论时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][comment]', $flshop.order.comment,
+												['data-rule'=>'required','data-tip'=>'收货后几天自动评论','placeholder'=>'如果在期间未自动评论，系统自动完成评论，设置0天不自动评论'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>最后售后时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][customer]', $flshop.order.customer,
+												['data-rule'=>'required','data-tip'=>'几天内支持售后','placeholder'=>'订单完成后
+												，用户在n天内可以发起售后申请，设置0天不允许申请售后'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="return">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数（天）</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>卖家自动同意时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][autoagree]', $flshop.order.autoagree,
+												['data-rule'=>'required','data-tip'=>'自动同意售后时间','placeholder'=>'买家提交退款后商家处理时间，超出n天后自动同意，设置0天不自动关闭'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>买家退货时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][returntime]', $flshop.order.returntime,
+												['data-rule'=>'required','data-tip'=>'卖家同意售后，退货时间','placeholder'=>'退货时间，如果超过则关闭售后'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>卖家收货时间</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[order][receivingtime]', $flshop.order.receivingtime,
+												['data-rule'=>'required','data-tip'=>'买家退回宝贝，自动收货时间','placeholder'=>'买家退货后，超出指定天数后自动完成售后'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="find">
+				<div class="widget-body no-padding">
+					<form id="ini-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>发现启用社交评论</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[config][comment_switch]', $flshop.config.comment_switch, ['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>APP功能开关</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::checkboxs('row[find][app_switch]', ['new'=>'上新',
+												'live'=>'直播', 'video'=>'短视频（取消则关闭此功能）', 'want'=>'种草', 'show'=>'买家秀'], $flshop.find.app_switch)}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>小程序功能开关</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::checkboxs('row[find][mp_switch]', ['new'=>'上新',
+												'live'=>'直播', 'video'=>'短视频（取消则关闭此功能）', 'want'=>'种草', 'show'=>'买家秀'], $flshop.find.mp_switch)}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>H5功能开关</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::checkboxs('row[find][h5_switch]', ['new'=>'上新',
+												'live'=>'直播', 'video'=>'短视频（取消则关闭此功能）', 'want'=>'种草', 'show'=>'买家秀'], $flshop.find.h5_switch)}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>微信内置浏览器</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::checkboxs('row[find][wechat_switch]', ['new'=>'上新',
+												'live'=>'直播', 'video'=>'短视频（取消则关闭此功能）', 'want'=>'种草', 'show'=>'买家秀'], $flshop.find.wechat_switch)}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>个人发布需审核</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[find][personalExamine_switch]', $flshop.find.personalExamine_switch, ['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>店铺个人发布均审核</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[find][allExamine_switch]', $flshop.find.allExamine_switch, ['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="live">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped" id="app">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>直播AppName</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][appName]', $flshop.live.appName,
+												['data-rule'=>'required','data-tip'=>'具体请看文档','placeholder'=>'例如：flshop'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/365.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置直播AppName?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>域名是否已配置SSL</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::switcher('row[live][sslSwitch]', $flshop.live.sslSwitch,
+												['color'=>'success', 'yes'=>'Y', 'no'=>'N'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>直播推流域名</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][pushDomain]', $flshop.live.pushDomain,
+												['data-rule'=>'required','data-tip'=>'推流流域名','placeholder'=>'例如：rtmp.flshop.com，不要添加http和/'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/365.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置直播推流域名?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>直播播放域名</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][liveDomain]', $flshop.live.liveDomain,
+												['data-rule'=>'required','data-tip'=>'播流域名','placeholder'=>'例如：live.flshop.com，不要添加http和/'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/365.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置直播播放域名?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<!-- 1.1.2升级 -->
+								<tr>
+									<td>直播录制OSS域名</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][liveCnd]', $flshop.live.liveCnd,
+												['data-rule'=>'required','data-tip'=>'请在阿里云OSS配置或使用OSS提供域名','placeholder'=>'例如：play.flshop.com'])}
+												<div style="margin-top:5px;">
+													<a href="https://help.aliyun.com/document_detail/84932.htm" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置直播录制OSS域名?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<!-- 1.1.2升级 -->
+								<tr>
+									<td>直播是否鉴权</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<select name="row[live][authSwitch]" data-rule="required" id="authSwitch" v-model="authSwitch" class="form-control">
+													<option v-for="(item, index) in authList" :key="index" :value="index" v-text="item" :selected="authSwitch === index"></option>
+												</select>
+												<div style="margin-top:5px;">
+													<a href="javascript:" data-toggle="tooltip" data-title="无法直播时请检查IM和尝试关闭鉴权"> 
+														<i class="fa fa-info-circle"></i> 无法直播？鉴权不生效？
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr v-show="authSwitch == 'Y'">
+									<td>播放域名鉴权KEY</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][liveKey]', $flshop.live.liveKey,
+												['data-rule'=>'required','data-tip'=>'请在阿里云直播后台获取','placeholder'=>'例如：323We1sdf1'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr v-show="authSwitch == 'Y'">
+									<td>推流域名鉴权KEY</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][pushKey]', $flshop.live.pushKey,
+												['data-rule'=>'required','data-tip'=>'请在阿里云直播后台获取','placeholder'=>'例如：323We1sdf1'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr v-show="authSwitch == 'Y'">
+									<td>鉴权有效分钟</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][builderTime]', $flshop.live.builderTime,
+												['data-rule'=>'required','data-tip'=>'请输入分钟数，推荐60分钟最多360分钟','placeholder'=>'例如：60'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<!-- 1.1.2升级 -->
+								<tr>
+									<td>是否启用转码模板</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<select name="row[live][transTemplateSwitch]" data-rule="required" id="transTemplateSwitch" v-model="transTemplateSwitch" class="form-control">
+													<option v-for="(item, index) in transTemplateList" :key="index" :value="index" v-text="item" :selected="transTemplateSwitch === index"></option>
+												</select>
+												<div style="margin-top:5px;">
+													<a href="javascript:" data-toggle="tooltip" data-title="开启转码模板后，则压缩播放节省流量"> 
+														<i class="fa fa-info-circle"></i> 转码模板是什么？
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr v-show="transTemplateSwitch == 'Y'">
+									<td>转码模板</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[live][transTemplate]', $flshop.live.transTemplate,
+												['data-rule'=>'required','data-tip'=>'请填写模板英文名','placeholder'=>'例如：lld，为选择标清播放'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/365.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置转码模板?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>直播推流回调地址</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<div class="input-group url">
+													<input class="form-control" type="text"
+														value="{$flshop.ini.appurl|htmlentities}/flshop/callback/push"
+														disabled>
+													<span class="input-group-btn"> <span class="btn btn-info btn-copy"
+															data-clipboard-text="{$flshop.ini.appurl|htmlentities}/flshop/callback/push">
+															<i class="fa fa-clipboard"></i></span> </span>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>直播录制OSS回调地址</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<div class="input-group url">
+													<input class="form-control" type="text"
+														value="{$flshop.ini.appurl|htmlentities}/flshop/callback/record"
+														disabled>
+													<span class="input-group-btn"> <span class="btn btn-info btn-copy"
+															data-clipboard-text="{$flshop.ini.appurl|htmlentities}/flshop/callback/record">
+															<i class="fa fa-clipboard"></i></span> </span>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="video">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>访问控制RAM AccessKeyId</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[video][accessKeyId]', $flshop.video.accessKeyId,
+												['data-rule'=>'required','data-tip'=>'同OSS AccessKeyId ![但需阿里云RAM访问用户组中添加VOB相关权限]','placeholder'=>'例:EIo37qBnBu7z8esyibrVZ4ds'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/309.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置访问控制RAM AccessKeyId?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>访问控制RAM AccessKeySecret</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[video][accessKeySecret]', $flshop.video.accessKeySecret,
+												['data-rule'=>'required','data-tip'=>'同OSS AccessKeySecret ![但需阿里云RAM访问用户组中添加VOB相关权限]','placeholder'=>'例:vBN6Iq0GEzhRB4hRDVhtQlkqLp1g50'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/309.html#toc-3" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置访问控制RAM AccessKeySecret?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								
+								<!-- 1.1.3升级 -->
+								<tr>
+									<td>阿里云点播地域</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::selectpicker('row[video][regionId]', ['cn-shanghai'=>'上海地域', 'cn-beijing'=>'北京地域'], $flshop.video.regionId, ['data-rule'=>'required'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/309.html#toc-6" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置阿里云点播地域，为什么没有其他地域?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>媒体处理工作流ID</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[video][workflowId]', $flshop.video.workflowId,
+												['data-rule'=>'required','data-tip'=>'阿里点播控制台 / 配置管理 / 媒体处理配置 -> 工作流','placeholder'=>'例:504co48o2nkpnc6rkod5krvc0hfcuw1s'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/309.html#toc-6" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置媒体处理工作流ID?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>媒体处理回调 Url</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<div class="input-group url">
+													<input class="form-control" type="text"
+														value="{$flshop.ini.appurl|htmlentities}/flshop/callback/vod"
+														disabled>
+													<span class="input-group-btn"> <span class="btn btn-info btn-copy"
+															data-clipboard-text="{$flshop.ini.appurl|htmlentities}/flshop/callback/vod">
+															<i class="fa fa-clipboard"></i></span> </span>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>媒体处理回调 鉴权秘钥</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[video][privateKey]', $flshop.video.privateKey,
+												['data-rule'=>'required','data-tip'=>'阿里点播控制台 / 配置管理 / 媒体处理配置 -> 回调设置','placeholder'=>'例:HLmMJw1I8Gm0rbGEBdNepV09RgmOZkQo'])}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/309.html#toc-6" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何配置媒体处理回调 鉴权秘钥?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="im">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>客服初始消息</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][auth_reply]', $flshop.config.auth_reply,
+												['data-rule'=>'required','data-tip'=>'请填写客服初始消息','placeholder'=>'例如：欢迎使用在线客服'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>人工未在线</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][not_online]', $flshop.config.not_online,
+												['data-rule'=>'required','data-tip'=>'请填写人工未在线','placeholder'=>'例如：[汗]
+												非工作时间8:00-22:00 或客服繁忙！请稍后再试~'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>客服首消息</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[config][service_initial]',
+												$flshop.config.service_initial,
+												['data-rule'=>'required','data-tip'=>'请填写客服首消息','placeholder'=>'例如：您好
+												[微笑] 请用一句话简短描述问题~'])}
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="kuaidi">
+				<div class="widget-body no-padding">
+					<form id="chat-form" class="edit-form form-horizontal" role="form" data-toggle="validator"
+						method="POST" action="{:url('flshop.client/edit')}">
+						{:token()}
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th width="15%">配置项</th>
+									<th width="85%">参数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>快递100 Key</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												{:Form::text('row[kuaidi][secretKey]', $flshop.kuaidi.secretKey)}
+												<div style="margin-top:5px;">
+													<a href="https://doc.fastadmin.net/flshop/611.html" target="_blank">
+														<i class="fa fa-question-circle"></i> 如何快递100 Key?
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>回调地址</td>
+									<td>
+										<div class="row">
+											<div class="col-sm-8 col-xs-12">
+												<div class="input-group url">
+												<span
+													class="input-group-addon">{$flshop.ini.appurl|htmlentities}</span>
+												<input data-rule="required" class="form-control"
+													name="row[kuaidi][callbackUrl]" data-tip="未二次开发不建议修改默认回调"
+													type="text"
+													value="{$flshop.kuaidi.callbackUrl|htmlentities}">
+												<span class="input-group-btn"> <span class="btn btn-info btn-copy"
+														data-clipboard-text="{$flshop.ini.appurl|htmlentities}{$flshop.kuaidi.callbackUrl|htmlentities}">
+														<i class="fa fa-clipboard"></i></span> </span>
+												</div>
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+										<button type="submit" class="btn btn-success btn-embossed">确定</button>
+										<button type="reset" class="btn btn-default btn-embossed">重置</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	[v-cloak] {display: none;}
+	@media (max-width: 375px) {
+		.edit-form tr td input {
+			width: 100%;
+		}
+
+		.edit-form tr th:first-child,
+		.edit-form tr td:first-child {
+			width: 20%;
+		}
+
+		.edit-form tr th:nth-last-of-type(-n+2),
+		.edit-form tr td:nth-last-of-type(-n+2) {
+			display: none;
+		}
+	}
+
+	.edit-form table>tbody>tr td a.btn-delcfg {
+		visibility: hidden;
+	}
+
+	.edit-form table>tbody>tr:hover td a.btn-delcfg {
+		visibility: visible;
+	}
+	.input-group.url .input-group-addon {
+		background-color: #e8edf0;
+		color: #868686;
+		border-color: #d2d6de;
+	}
+</style>

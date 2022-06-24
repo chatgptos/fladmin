@@ -1,0 +1,295 @@
+<style type="text/css">
+	.content{
+		padding: 0 15px;
+	}
+	.wanlfind-add-container {
+		margin-bottom: 60px;
+	}
+
+	.find_title {
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 14px;
+	}
+	.pointer{
+		cursor:pointer
+	}
+	
+	/* 短视频 */
+	.wanlfind-add-container__main .video .find_title{
+		height: 15px;
+	}
+	
+	.wanlfind-add-container__main .video .main{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.wanlfind-add-container__main .video .main video{
+		width: 110px;
+		height: 150px;
+		object-fit: cover;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+	.wanlfind-add-container__main .video .main .progres{
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		color: #ffffff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.wanlfind-add-container__main .video .subject {
+		display: flex;
+	}
+
+	.wanlfind-add-container__main .video .subject .upload {
+		position: relative;
+		width: 110px;
+		height: 150px;
+		background-color: #f9fafc;
+		border-radius: 9px;
+		overflow: hidden;
+		margin-right: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.wanlfind-add-container__main .video .subject .upload .text {
+		color: #b2b8bd;
+		font-weight: initial;
+	}
+
+	.wanlfind-add-container__main .video .subject .upload .text p {
+		margin: 0;
+	}
+
+
+
+	.wanlfind-add-container__main .video .subject .details {
+		width: calc(100% - 110px - 12px);
+		padding: 0;
+		font-size: 14px;
+		border: none;
+		resize: none;
+	}
+
+	/* 详情 */
+	.wanlfind-add-container__main .describe .subject {
+		background-color: #f9fafc;
+		border-radius: 9px;
+		border: none;
+		resize: none;
+		height: 200px;
+		font-size: 14px;
+	}
+
+	/* 图片 */
+	.wanlfind-add-container__main .want .subject {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -2px -7px;
+	}
+
+	.wanlfind-add-container__main .want .subject .item {
+		position: relative;
+		background-color: #f9fafc;
+		border-radius: 9px;
+		width: calc(calc(100% / 4) - 10px);
+		height: 80px;
+		margin: 5px;
+		box-sizing: border-box;
+		border: 1px solid #f9f9f9;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.wanlfind-add-container__main .want .subject .item .text {
+		color: #b2b8bd;
+	}
+
+	.wanlfind-add-container__main .want .subject .item .text p {
+		margin: 0;
+	}
+
+	.wanlfind-add-container__main .want .subject .item img {
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.wanlfind-add-container__main .want .subject .item .closes {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 20px;
+		width: 20px;
+		border-radius: 5000px;
+		overflow: hidden;
+		background-color: #e6162c;
+		color: #ffffff;
+		text-align: center;
+		line-height: 20px;
+		font-size: 16px;
+	}
+
+	/* 评论 */
+	.wanlfind-add-container__main .comment .subject .title {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.wanlfind-add-container__main .comment .subject .add {
+		width: 100%;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.wanlfind-add-container__main .comment .subject .image {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -5px;
+	}
+
+	.wanlfind-add-container__main .comment .subject .image img {
+		background-color: #f9fafc;
+		border-radius: 9px;
+		width: calc(calc(100% / 3) - 10px);
+		margin: 5px;
+		box-sizing: border-box;
+		border: 1px solid #f9f9f9;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.wanlfind-add-container__footer {
+		padding: 10px;
+		background-color: #ecf0f1;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+</style>
+<form id="add-form" role="form" data-toggle="validator" method="POST" action="">
+	<div class="wanlfind-add-container" id="app" v-cloak>
+		<div class="wanlfind-add-container__main">
+			<!-- 短视频 -->
+			<div class="video" v-if="params.type === 'video'">
+				<div class="find_title"></div>
+				<div class="subject">
+					<input type="file" id="videoUpload" @change="fileChange($event)" style="display: none;">
+					<div class="upload">
+						<div v-if="params.video_id" class="main pointer">
+							<video :src="file"></video>
+							<label for="videoUpload" class="progres">
+								已上传 {{progress}}
+							</label>
+						</div>
+						<div v-else>
+							<label for="videoUpload" class="text-center text pointer">
+								<i class="fa fa-upload"></i>
+								<p>上传视频</p>
+							</label>
+						</div>
+					</div>
+					<textarea v-model="params.content" class="details form-control" data-rule="required" rows="4"
+						placeholder="点击编辑给视频添加文案，提升曝光率获取更多赞赏~" cols="50"></textarea>
+				</div>
+			</div>
+			<div class="want" v-if="params.type === 'want'">
+				<div class="find_title">
+					<span> 上传图片 </span>
+				</div>
+				<div class="subject">
+					<div class="item" v-for="(item, index) in params.images" :key="index">
+						<img :src="cdnurl(item)">
+						<div class="closes pointer" @click="delImg(index)"> <span>x</span> </div>
+					</div>
+					<div class="item pointer" v-if="params.images.length < 9" @click="addImg">
+						<div class="text-center text">
+							<i class="fa fa-plus"></i>
+							<p>添加图片</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="describe" v-if="params.type === 'new' || params.type === 'want'">
+				<div class="find_title">
+					<span> <i class="fa fa-pencil-square-o"></i> {{typeList[params.type]}}文案 </span>
+				</div>
+				<textarea v-model="params.content" class="form-control subject" data-rule="required" rows="4"
+					:placeholder="`编辑${typeList[params.type]}文案~`" cols="50"></textarea>
+			</div>
+			<div class="want" v-if="params.type !== 'show'">
+				<div class="find_title">
+					<span> <i class="fa fa-link"></i> 选择商品 </span>
+					<span @click="addGoods"> <i class="fa fa-angle-right"></i> </span>
+				</div>
+				<div class="subject">
+					<div class="item" v-for="(item, index) in goodsList" :key="index">
+						<img :src="cdnurl(item.image)">
+						<div class="closes pointer" @click="delGoods(index)"> <span>x</span> </div>
+					</div>
+					<div class="item pointer" v-if="goodsList.length < 9" @click="addGoods">
+						<div class="text-center text">
+							<i class="fa fa-plus"></i>
+							<p>添加商品</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment" v-if="params.type === 'show'">
+				<div class="find_title">
+					<span><i class="fa fa-comments-o"></i> 买家评论</span>
+				</div>
+				<div class="subject">
+					<div v-if="params.comments_id">
+						<div class="title">
+							<div class="">
+								{{params.content}}
+							</div>
+							<div class="pointer" @click="delComments">
+								<i class="fa fa-times"></i>
+							</div>
+						</div>
+						<div class="image">
+							<img :src="cdnurl(item)" v-for="(item, index) in params.images" :key="index">
+						</div>
+					</div>
+					<!-- 当存在 -->
+					<div class="add" v-else>
+						<div class="btn btn-default pointer" @click="addComments">
+							<i class="fa fa-hand-pointer-o"></i> 选择评论
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wanlfind-add-container__footer">
+			<div class="btn btn-block btn-danger btn-lg" @click="handleSubmit">
+				<i class="fa fa-paper-plane"></i> 发布{{typeList[params.type]}}
+			</div>
+		</div>
+	</div>
+</form>

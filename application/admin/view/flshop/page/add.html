@@ -1,0 +1,41 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+	{present name="type"}
+	<div class="form-group">
+	    <label class="control-label col-xs-12 col-sm-2">{:__('模板名称')}:</label>
+	    <div class="col-xs-12 col-sm-8">
+	        <input id="c-name" class="form-control" name="row[name]" data-rule="required" type="text" placeholder="请输入模板名称">
+	    </div>
+	</div>
+	<div class="form-group">
+		<input name="row[type]" type="hidden" value="systpl">
+	    <label class="control-label col-xs-12 col-sm-2">{:__('页面封面')}:</label>
+	    <div class="col-xs-12 col-sm-8">
+	       {:Form::image('row[cover]', '', ['data-rule'=>'required'])}
+	    </div>
+	</div>
+	{else /}
+	<div class="form-group">
+	    <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+	    <div class="col-xs-12 col-sm-8">
+	        <input id="c-name" class="form-control" name="row[name]" data-rule="required" type="text" value="自定义页面">
+	    </div>
+	</div>
+	<div class="form-group">
+	    <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+	    <div class="col-xs-12 col-sm-8">
+	        <select id="c-type" class="form-control selectpicker" name="row[type]">
+	            {foreach name="typeList" item="vo"}
+	                <option value="{$key}" {in name="key" value="page"}selected{/in}>{$vo}</option>
+	            {/foreach}
+	        </select>
+	    </div>
+	</div>
+	{/present}
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,88 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Intro')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-intro" data-rule="required" class="form-control " rows="5" name="row[intro]" cols="50">{$row.intro|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[start_time]" type="text" value="{:$row.start_time?datetime($row.start_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[end_time]" type="text" value="{:$row.end_time?datetime($row.end_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Data')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-data" data-rule="required" class="form-control " rows="5" name="row[data]" cols="50">{$row.data|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Template')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-template" data-rule="required" class="form-control" name="row[template]" type="text" value="{$row.template|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Css')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-css" data-rule="required" class="form-control " rows="5" name="row[css]" cols="50">{$row.css|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Topic_img')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-topic_img" class="form-control" name="row[topic_img]" type="text" value="{$row.topic_img|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title_pic')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title_pic" class="form-control" name="row[title_pic]" type="text" value="{$row.title_pic|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Base_style')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-base_style" class="form-control" name="row[base_style]" type="text" value="{$row.base_style|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Htmls')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-htmls" class="form-control " rows="5" name="row[htmls]" cols="50">{$row.htmls|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Keywords')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-keywords" class="form-control" name="row[keywords]" type="text" value="{$row.keywords|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" class="form-control" name="row[description]" type="text" value="{$row.description|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

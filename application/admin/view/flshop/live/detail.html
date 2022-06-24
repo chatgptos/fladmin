@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.7/skins/default/aliplayer-min.css" />
+<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.7/aliplayer-min.js">
+</script>
+<style type="text/css">
+	.content {
+		overflow: hidden;
+	}
+
+	.aliplayer {
+		margin: -15px;
+	}
+
+	video {
+		object-fit: cover;
+	}
+	
+	.empty{
+		margin-top: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.empty img{
+		width: 200px;
+		height: 200px;
+	}
+	.empty .text{
+		margin-top: 10px;
+		color: #95a5a6;
+	}
+</style>
+<div class="aliplayer">
+	<!-- 直播状态:0=未开播,1=正在直播,2=直播结束,3=直播封禁 -->
+	{if condition="$row.state eq 0"/}
+		<div class="empty">
+			<div>
+				<img src="/assets/addons/flshop/img/default/default3x.png">
+				<div class="text">直播准备中~</div>
+			</div>
+		</div>
+	{/if}
+	{if condition="$row.state eq 3"/}
+		<div class="empty">
+			<div>
+				<img src="/assets/addons/flshop/img/default/default3x.png">
+				<div class="text">直播封禁</div>
+			</div>
+		</div>
+	{/if}
+	{if condition="$row.state eq 1"/}
+		<div class="prism-player" id="player-con"></div>
+		<script>
+			var player = new Aliplayer({
+				"id": "player-con",
+				"source": "{$row.pushurl}",
+				"width": "100%",
+				"height": "675px",
+				"autoplay": true,
+				"isLive": true,
+				"rePlay": false,
+				"playsinline": true,
+				"preload": true,
+				"controlBarVisibility": "hover",
+				"useH5Prism": true
+			}, function(player) {
+				console.log("The player is created");
+			});
+		</script>
+	{/if}
+	{if condition="$row.state eq 2"/}
+		{if condition="$row.recordurl"}
+			<div class="prism-player" id="player-con"></div>
+			<script>
+				var player = new Aliplayer({
+					"id": "player-con",
+					"source": "{$row.recordurl}",
+					"width": "100%",
+					"height": "675px",
+					"autoplay": true,
+					"isLive": true,
+					"rePlay": false,
+					"playsinline": true,
+					"preload": true,
+					"controlBarVisibility": "hover",
+					"useH5Prism": true
+				}, function(player) {
+					console.log("The player is created");
+				});
+			</script>
+		{else /}
+			<div class="empty">
+				<div>
+					<img src="/assets/addons/flshop/img/default/default3x.png">
+					<div class="text">直播结束，录制中</div>
+				</div>
+			</div>
+		{/if}
+	{/if}
+</div>

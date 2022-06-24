@@ -1,0 +1,82 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_name" class="form-control" name="row[act_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_add')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_add" class="form-control" name="row[act_add]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_date" class="form-control" name="row[act_date]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[act_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_content" class="form-control" name="row[act_content]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Linkman')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-linkman" class="form-control" name="row[linkman]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tel" class="form-control" name="row[tel]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Registrant_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-registrant_id" data-rule="required" data-source="registrant/index" class="form-control selectpage" name="row[registrant_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pass')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pass" class="form-control" name="row[pass]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_time_minute')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_time_minute" class="form-control" name="row[act_time_minute]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_time_end')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_time_end" class="form-control" name="row[act_time_end]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_time_minute_end')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_time_minute_end" class="form-control" name="row[act_time_minute_end]" type="text">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

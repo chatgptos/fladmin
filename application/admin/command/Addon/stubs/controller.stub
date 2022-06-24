@@ -1,0 +1,15 @@
+<?php
+
+namespace addons\{%addon%}\controller;
+
+use think\addons\Controller;
+
+class Index extends Controller
+{
+
+    public function index()
+    {
+        $this->error("当前服务暂无前台页面");
+    }
+
+}

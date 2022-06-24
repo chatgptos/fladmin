@@ -1,0 +1,297 @@
+<style type="text/css">
+	body.is-dialog,
+	.content {
+		background-color: #f9f9f9;
+	}
+
+	.wanl-groups>div {
+		background-color: #fff;
+		border-radius: 8px;
+		padding: 10px;
+		margin-bottom: 15px;
+	}
+
+	.wanl-groups .success {
+		height: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #00C800;
+		font-size: 18px;
+	}
+
+	.wanl-groups .success i {
+		font-size: 38px;
+		margin-right: 6px;
+	}
+
+	.wanl-groups .user {
+		display: flex;
+		align-items: center;
+	}
+
+	.wanl-groups .user .avatar {
+		height: 46px;
+		width: 46px;
+		border-radius: 5000px;
+		margin-right: 12px;
+	}
+
+	.wanl-groups .user .main .nickname {
+		margin-bottom: 2px;
+		font-size: 14px;
+	}
+
+	.wanl-groups .user .main .grouptype {
+		color: #b5bbc8;
+	}
+
+	.wanl-groups .goods .item {
+		display: flex;
+	}
+
+	.wanl-groups .goods .item+.item {
+		margin-top: 10px;
+		padding-top: 10px;
+		border-top: 1px solid #f5f5f5;
+	}
+
+
+	.wanl-groups .goods .item .image {
+		height: 65px;
+		width: 65px;
+		border-radius: 6px;
+		margin-right: 12px;
+	}
+
+	.wanl-groups .goods .item .main {
+		display: flex;
+		flex: 1;
+		align-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.wanl-groups .goods .item .main>div {
+		width: 100%;
+	}
+
+	.wanl-groups .goods .item .main .title {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		color: #818181;
+	}
+
+	.wanl-groups .goods .item .main .title .text {
+		font-size: 14px;
+	}
+
+	.wanl-groups .goods .item .main .details {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.wanl-groups .goods .item .main .details .left .group {
+		color: #fe6600;
+		font-size: 16px;
+		margin-right: 2px;
+	}
+
+	.wanl-groups .goods .item .main .details .right .market {
+		color: #b5bbc8;
+	}
+
+	.wanl-groups .goods .item .main .details .left .difference {
+		background-color: #f1f1f1;
+		font-size: 10px;
+		font-weight: inherit;
+		color: #333;
+	}
+
+	.wanl-groups .list .title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-size: 15px;
+		color: #666666;
+		font-weight: bold;
+	}
+
+	.wanl-groups .list .title .info {
+		margin-bottom: 8px;
+	}
+	
+	.wanl-groups .list .title #go span{
+		background-color: #333;
+		color: #fff;
+		padding: 2px;
+		border-radius: 5px;
+		margin: 0 2px;
+		font-size: 14px;
+	}
+
+	.wanl-groups .list .userlist {
+		display: flex;
+		justify-content: center;
+		margin: 20px 0;
+	}
+
+	.wanl-groups .list .userlist .item {
+		background-color: #f1f1f1;
+		border-radius: 5000px;
+		width: 50px;
+		height: 50px;
+		margin: 0 8px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.wanl-groups .list .userlist .item .tag {
+		position: absolute;
+		left: 10px;
+		bottom: -2px;
+	}
+
+	.wanl-groups .list .userlist .item img {
+		width: 50px;
+		height: 50px;
+		border-radius: 5000px;
+	}
+
+	.wanl-groups .list .userlist .item .fa {
+		font-size: 24px;
+		color: #929292;
+	}
+</style>
+<div class="wanl-groups">
+	{eq name="row.state" value="success"}
+	<div class="success">
+		<i class="fa fa-check-circle"></i> 拼团成功
+	</div>
+	{/eq}
+	<div class="user">
+		<img class="avatar" src="{$row.user.avatar|cdnurl}">
+		<div class="main">
+			<div class="nickname">
+				{$row.user.nickname}
+			</div>
+			<div class="grouptype">
+				发起了{$row.people_num}人{$row.group_type == 'group' ? '拼团' : '阶梯团'}
+			</div>
+		</div>
+	</div>
+	<div class="list">
+		<div class="title">
+			{if condition="$row.state eq 'start'"}
+			<div>
+				<div class="info">
+					邀请 <span class="text-red"> {$row.people_num - $row.join_num} </span> 位好有，团满可拼团成功
+				</div>
+				<div class="text-center" id="go"></div>
+			</div>
+			{elseif condition="($row.state eq 'success') OR ($row.state eq 'auto')"/}
+			<div>
+				团长人气太高，已拼团成功
+			</div>
+			{elseif condition="$row.state eq 'fail'"/}
+			<div class="text-red">
+				该团未能按时凑齐人数，拼团失败
+			</div>
+			{else /}
+			<div>
+				订单尚未完成正在等待开团
+			</div>
+			{/if}
+		</div>
+		<div class="userlist">
+			{volist name="row.team" id="item"}
+			<div class="item">
+				<img src="{$item.user_id === 0 ? cdnurl($item.avatar) : cdnurl($item.user.avatar)}">
+				{if condition="$item.user_id eq $row.user_id"}
+				<div class="tag">
+					<small class="label bg-red">团长</small>
+				</div>
+				{/if}
+			</div>
+			{/volist}
+			{for start="0" end="$row.people_num - $row.join_num"}
+			<div class="item">
+				<span class="fa fa-user-o"></span>
+			</div>
+			{/for}
+		</div>
+
+	</div>
+	<div class="goods">
+		{volist name="row.ordergoods" id="item"}
+		<div class="item">
+			<img class="image" src="{$item.image|cdnurl}">
+			<div class="main">
+				<div class="title">
+					<small class="label bg-orange-active">规格 {$item.difference}</small> <span
+						class="text">{$item.title}</span>
+				</div>
+				<div class="details">
+					<div class="left">
+						<span class="group">￥{$item.group_price}</span>
+						<small class="label difference">用户 {$item.user.nickname}</small>
+					</div>
+					<div class="right">
+						<span class="market">单购价：￥{$item.market_price}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/volist}
+	</div>
+
+</div>
+
+<script>
+	function countTime(time, id) {
+		var date = new Date();
+		var now = date.getTime();
+		var end = time * 1000 *2;
+		var leftTime = end - now; //时间差                              
+		var d, h, m, s, ms;
+		if (leftTime >= 0) {
+			d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+			h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+			m = Math.floor(leftTime / 1000 / 60 % 60);
+			s = Math.floor(leftTime / 1000 % 60);
+			ms = Math.floor(leftTime % 1000);
+			if (ms < 100) {
+				ms = "0" + ms;
+			}
+			if (s < 10) {
+				s = "0" + s;
+			}
+			if (m < 10) {
+				m = "0" + m;
+			}
+			if (h < 10) {
+				h = "0" + h;
+			}
+			//将倒计时赋值到div中
+			document.getElementById(id).innerHTML = `<span>${h}</span>:<span>${m}</span>:<span>${s}</span>'<span>${ms}</span>`;
+		} else {
+			document.getElementById(id).innerHTML = "已过期"
+		}
+		//递归每秒调用countTime方法，显示动态时间效果
+		return leftTime
+	}
+	//调用方式  需要传入  结束时间   和 倒计时内容所在的id名称
+	var s = setInterval(function() {
+		var dates = countTime("{$row.validitytime}", "go");
+		if (dates <= 0) {
+			clearInterval(s)
+		}
+	}, 50)
+</script>

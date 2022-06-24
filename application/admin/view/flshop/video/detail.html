@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.7/skins/default/aliplayer-min.css" />
+<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.7/aliplayer-min.js"></script>
+<style type="text/css">
+	.content{
+		overflow: hidden;
+	}
+	.aliplayer{
+		margin: -15px;
+	}
+	video{
+		object-fit: cover;
+	}
+</style>
+<div class="aliplayer">
+	<div class="prism-player" id="player-con"></div>
+	<script>
+		var player = new Aliplayer({
+			"id": "player-con",
+			"source": "{$row.url|htmlentities}",
+			"width": "100%",
+			  "height": "675px",
+			  "autoplay": true,
+			  "isLive": false,
+			  "rePlay": false,
+			  "playsinline": true,
+			  "preload": true,
+			  "controlBarVisibility": "hover",
+			  "useH5Prism": true
+		}, function(player) {
+			console.log("The player is created");
+		});
+	</script>
+</div>

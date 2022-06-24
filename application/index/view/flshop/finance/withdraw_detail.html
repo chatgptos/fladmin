@@ -1,0 +1,104 @@
+<div class="wanl-money-log">
+	<div class="bg-white padding-xl margin-bottom-bj">
+		<div class="span-center solid-bottom title">
+			<span>{$row.status_text}</span>
+			<div class="wanl-black"> -￥{$row.money} </div>
+		</div>
+		<div class="list margin-top-xl text-sm">
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Handingfee')} </div>
+				<div class="info"> {$row.handingfee|htmlentities} </div>
+			</div>
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Taxes')} </div>
+				<div class="info"> {$row.taxes|htmlentities} </div>
+			</div>
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Type')} </div>
+				<div class="info"> {$row.type|htmlentities} </div>
+			</div>
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Account')} </div>
+				<div class="info"> <span class="label label-danger">{$row.account|htmlentities}</span> </div>
+			</div>
+			
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('created')} </div>
+				<div class="info"> {$row.created_text} </div>
+			</div>
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Updatetime')} </div>
+				<div class="info"> {$row.updatetime_text} </div>
+			</div>
+			{notempty name="row.transfertime"}
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('Transfertime')} </div>
+				<div class="info"> {$row.transfertime_text} </div>
+			</div>
+			{/notempty}
+			
+			{eq name="row.status" value="rejected"}
+			<div class="flex">
+				<div class="type wanl-gray"> {:__('拒绝理由')} </div>
+				<div class="info"> {$row.memo|htmlentities} </div>
+			</div>
+			{/eq}
+		</div>
+	</div>
+</div>
+<style>
+	.wanl-money-log .title{
+		padding: 10px 0 25px 0;
+	}
+	.wanl-money-log .title>div{
+		font-size: 35px;
+		font-weight: 600;
+		margin-top: 7px;
+	}
+	.wanl-money-log .list .flex {
+		margin-bottom: 13px;
+	}
+	.wanl-money-log .list .flex .type{
+		width: 75px;
+	}
+	.wanl-money-log .list .flex .info{
+		flex-grow: 1;
+	}
+	.wanl-gray{
+		color: #999;
+	}
+	.span-center{
+		text-align: center;
+	}
+	.flex{
+		display: flex;
+	}
+	.bg-white{
+		background-color: #fff;
+	}
+	.padding-xl{
+		padding: 20px;
+	}
+	.margin-top-xl{
+		margin-top: 20px;
+	}
+	.margin-bottom-bj{
+		margin-bottom: 13px;
+	}
+	.text-price::before {
+		content: "¥";
+		font-size: 80%;
+		margin-right: 4rpx;
+	}
+	.solid-bottom{
+		border-bottom: 1px solid #ddd;
+	}
+	.text-cut-2 {
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+</style>

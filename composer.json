@@ -6,12 +6,11 @@
         "fastadmin",
         "thinkphp"
     ],
-    "homepage": "https://www.fladmin.net/",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "jack",
-            "email": "1276789849@qq.com"
+            "name": "Karson",
+            "email": "karson@fastadmin.net"
         }
     ],
     "require": {

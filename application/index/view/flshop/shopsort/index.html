@@ -1,0 +1,35 @@
+<div class="panel panel-default panel-intro">
+    
+    <div class="panel-heading">
+        <ul class="nav nav-tabs" data-field="status">
+            <li class="active"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="statusList" item="vo"}
+            <li><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+						<a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+						<a href="javascript:;" class="btn btn-success btn-add" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+						<a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+						<a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+						<a href="javascript:;" class="btn btn-danger btn-toggle-all"><i class="fa fa-plus"></i> {:__('展开列表')}</a>
+                        <a href="flshop/goods" class="btn btn-info btn-dialog" data-area=["90%","80%"] title="{:__('全部商品')}" ><i class="fa fa-shopping-bag"></i> {:__('全部商品')}</a>
+                        <a href="flshop/groups/goods" class="btn btn-warning btn-dialog" data-area=["90%","80%"] title="{:__('全部拼团')}" ><i class="fa fa-shopping-bag"></i> {:__('全部拼团')}</a>
+						<a href="flshop/config/index" class="btn btn-info btn-dialog" title="{:__('类目样式')}" ><i class="fa fa-shopping-bag"></i> {:__('类目样式')}</a>
+					</div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="flshop/shopsort/edit"
+                           data-operate-del="flshop/shopsort/del"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

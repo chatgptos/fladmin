@@ -1,0 +1,58 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Exhibitionid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-exhibitionId" class="form-control" name="row[exhibitionId]" type="number" value="{$row.exhibitionId|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_name" class="form-control" name="row[hall_name]" type="text" value="{$row.hall_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booths_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booths_num" class="form-control" name="row[booths_num]" type="number" value="{$row.booths_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_map')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_map" class="form-control" name="row[hall_map]" type="text" value="{$row.hall_map|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_addr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_addr" class="form-control" name="row[hall_addr]" type="text" value="{$row.hall_addr|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_height')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-map_height" class="form-control" name="row[map_height]" type="number" value="{$row.map_height|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Map_width')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-map_width" class="form-control" name="row[map_width]" type="number" value="{$row.map_width|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_namein')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_namein" class="form-control" name="row[hall_namein]" type="text" value="{$row.hall_namein|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

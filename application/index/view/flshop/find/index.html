@@ -1,0 +1,43 @@
+<div class="panel panel-default panel-intro">
+    
+    <div class="panel-heading">
+        <ul class="nav nav-tabs" data-field="type">
+            <li class="active"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="typeList" item="vo"}
+            <li><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-paper-plane"></i> {:__('发布')}
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li id="video"><a href="javascript:;"><i class="fa fa-video-camera"></i> 短视频</a></li>
+								<li id="new"><a href="javascript:;"><i class="fa fa-hacker-news"></i> 宝贝上新</a></li>
+								<li id="want"><a href="javascript:;"><i class="fa fa-heartbeat"></i> 种草</a></li>
+								<li id="show"><a href="javascript:;"><i class="fa fa-users"></i> 买家秀</a></li>
+							</ul>
+						</div>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+                        <a class="btn btn-success btn-recyclebin btn-dialog" href="flshop/find/recyclebin" title="{:__('Recycle bin')}"><i class="fa fa-recycle"></i> {:__('Recycle bin')}</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-del="flshop/find/del"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

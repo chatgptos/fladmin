@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'Id'               => 'ID',
+    'Shop_id'          => '店铺ID',
+    'Freight'          => '运费组合策略',
+    'Freight 0'        => '运费叠加',
+    'Freight 1'        => '以最低结算',
+    'Freight 2'        => '以最高结算',
+    'Iscloud'          => '是否开启云打印',
+    'Iscloud 0'        => '关闭',
+    'Iscloud 1'        => '开启',
+    'Isauto'           => '是否云打印自动发货',
+    'Isauto 0'         => '关闭',
+    'Isauto 1'         => '开启',
+    'Secret'           => 'Secret',
+    'Key'              => '授权KEY',
+    'Partner_id'       => '面单账号',
+    'Partner_key'      => '面单密码',
+    'Siid'             => '打印设备码',
+    'Tempid'           => '模板ID',
+    'Welcome'          => '欢迎消息',
+    'Send_name'        => '姓名(店铺名)',
+    'Send_phone_num'   => '固话/手机',
+    'Send_addr'        => '寄件地址',
+    'Return_name'      => '姓名(店铺名)',
+    'Return_phone_num' => '固话/手机',
+    'Return_addr'      => '退货地址',
+    'Created'          => '创建时间',
+    'Modified'         => '更新时间'
+];

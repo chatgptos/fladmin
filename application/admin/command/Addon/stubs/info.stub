@@ -1,0 +1,7 @@
+name = {%name%}
+title = 服务名称{%name%}
+intro = 服务介绍
+author = yourname
+website = https://www.fastadmin.net
+version = 1.0.0
+state = 1

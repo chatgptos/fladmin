@@ -1,0 +1,145 @@
+<div id="app" class="payment" v-cloak>
+	<div @click="choiceUser">
+		<div v-if="bankData" class="user">
+			<img :src="`/assets/addons/flshop/img/bank/${bankData.bankCode}.png`">
+			<div class="contens">
+				<div class="name">{{bankData.bankName}}</div>
+				<div class="info">尾号 {{getCode(bankData.cardCode)}} {{getType(bankData.cardType)}}</div>
+			</div>
+			<div class="action">
+				<i class="fa fa-angle-right"></i>
+			</div>
+		</div>
+		<div v-else class="user">
+			<div class="contens">
+				选择提现账户
+			</div>
+			<div class="action">
+				<i class="fa fa-angle-right"></i>
+			</div>
+		</div>
+	</div>
+	<div class="amount">
+		<div class="head">
+			<span class="title">提现金额</span>
+			<span class="rate" v-if="servicefee > 0">（费率 {{servicefee/10}}%）</span>
+		</div>
+		<div class="money">
+			<div class="symbol">￥</div>
+			<input type="number" @input="replaceInput" v-model="money"/>
+			<div class="closes" @click="emptyInput" v-if="money">
+				<i class="fa fa-times-circle"></i>
+			</div>
+		</div>
+		<div v-if="servicefee > 0" class="foot">
+			服务费<span class="text-yellow">￥{{servicemoney}}</span>，可用余额 ￥{{usermoney}} <span class="text-yellow" v-if="usermoney > 0" @click="moneyAll">全部</span>
+		</div>
+		<div v-else class="foot">
+			可用余额 ￥{{usermoney}} <span class="text-yellow" v-if="usermoney > 0" @click="moneyAll">全部</span>
+		</div>
+	</div>
+	<div class="button" :loading="loading" :disabled="loading" @click="withdraw">
+		<button type="button" class="btn btn-block btn-danger btn-lg">提现</button>
+	</div>
+</div>
+<style type="text/css">
+	.is-dialog #main {
+		background-color: #f9f9f9;
+	}
+	[v-cloak] {
+		display: none;
+	}
+	.content {
+		padding: 0;
+	}
+
+	.payment .user {
+		padding: 12px;
+		padding-right: 16px;
+		margin: 15px 0;
+		background-color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.payment .user img {
+		width: 50px;
+		height: 50px;
+		margin-right: 12px;
+	}
+
+	.payment .user .contens {
+		font-size: 14px;
+		flex: 1;
+	}
+
+	.payment .user .contens .name {
+		color: #222;
+	}
+
+	.payment .user .contens .info {
+		color: #828282;
+	}
+
+	.payment .user .action .fa {
+		font-size: 22px;
+		color: #777;
+	}
+
+	.payment .amount {
+		padding: 12px;
+		margin: 15px 0;
+		background-color: #ffffff;
+	}
+
+	.payment .amount .head {
+		margin-bottom: 12px;
+	}
+
+	.payment .amount .head .title {
+		font-size: 16px;
+		color: #222;
+	}
+
+	.payment .amount .head .rate {
+		font-size: 13px;
+		color: #828282;
+	}
+
+	.payment .amount .money {
+		display: flex;
+		align-items: center;
+	}
+
+	.payment .amount .money input {
+		height: 70px;
+		width: calc(100% - 60px);
+		border: 0;
+		outline: none;
+		font-size: 50px;
+	}
+
+	.payment .amount .money .symbol {
+		font-size: 30px;
+		width: 30px;
+	}
+
+	.payment .amount .money .closes {
+		width: 30px;
+		font-size: 22px;
+		text-align: center;
+		color: rgba(0, 0, 0, .2);
+	}
+
+	.payment .amount .foot {
+		color: #999;
+		border-top: 1px solid #f1f1f1;
+		padding-top: 12px;
+		margin-top: 12px;
+	}
+
+	.payment .button {
+		padding: 0 12px;
+	}
+</style>

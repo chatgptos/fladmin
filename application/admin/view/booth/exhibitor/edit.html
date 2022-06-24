@@ -1,0 +1,202 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_name" class="form-control" name="row[company_name]" type="text" value="{$row.company_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_name_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_name_en" class="form-control" name="row[company_name_en]" type="text" value="{$row.company_name_en|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_address" class="form-control" name="row[contact_address]" type="text" value="{$row.contact_address|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_address_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_address_en" class="form-control" name="row[contact_address_en]" type="text" value="{$row.contact_address_en|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Linkman')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-linkman" class="form-control" name="row[linkman]" type="text" value="{$row.linkman|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Linkman_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-linkman_en" class="form-control" name="row[linkman_en]" type="text" value="{$row.linkman_en|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_number" class="form-control" name="row[contact_number]" type="text" value="{$row.contact_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fax')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fax" class="form-control" name="row[fax]" type="text" value="{$row.fax|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Email')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-email" class="form-control" name="row[email]" type="text" value="{$row.email|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Siturl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-siturl" class="form-control" name="row[siturl]" type="text" value="{$row.siturl|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cellphone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cellphone" class="form-control" name="row[cellphone]" type="text" value="{$row.cellphone|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Postcode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-postcode" class="form-control" name="row[postcode]" type="text" value="{$row.postcode|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Zh_introduce')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-zh_introduce" class="form-control " rows="5" name="row[zh_introduce]" cols="50">{$row.zh_introduce|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('En_introduce')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-en_introduce" class="form-control " rows="5" name="row[en_introduce]" cols="50">{$row.en_introduce|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-number" class="form-control" name="row[number]" type="text" value="{$row.number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Editor_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-editor_id" min="0" data-rule="required" data-source="editor/index" class="form-control selectpage" name="row[editor_id]" type="text" value="{$row.editor_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Phone_pre1')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-phone_pre1" class="form-control" name="row[phone_pre1]" type="text" value="{$row.phone_pre1|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Phone_pre2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-phone_pre2" class="form-control" name="row[phone_pre2]" type="text" value="{$row.phone_pre2|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fax_pre1')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fax_pre1" class="form-control" name="row[fax_pre1]" type="text" value="{$row.fax_pre1|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fax_pre2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fax_pre2" class="form-control" name="row[fax_pre2]" type="text" value="{$row.fax_pre2|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Boothnum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-boothNum" class="form-control" name="row[boothNum]" type="text" value="{$row.boothNum|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Productservices')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-productServices" class="form-control" name="row[productServices]" type="text" value="{$row.productServices|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Product_services_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-product_services_en" class="form-control" name="row[product_services_en]" type="text" value="{$row.product_services_en|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Others')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-others" class="form-control" name="row[others]" type="text" value="{$row.others|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Others_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-others_en" class="form-control" name="row[others_en]" type="text" value="{$row.others_en|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Edit_user')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-edit_user" class="form-control" name="row[edit_user]" type="text" value="{$row.edit_user|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Edit_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-edit_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[edit_time]" type="text" value="{:$row.edit_time?datetime($row.edit_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_name_en2zh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_name_en2zh" data-rule="required" class="form-control" name="row[company_name_en2zh]" type="text" value="{$row.company_name_en2zh|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Exhibitor_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-exhibitor_id" data-rule="required" data-source="exhibitor/index" class="form-control selectpage" name="row[exhibitor_id]" type="text" value="{$row.exhibitor_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Approved_flag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-approved_flag" data-rule="required" min="0" class="form-control" name="row[approved_flag]" type="number" value="{$row.approved_flag|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Approved_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-approved_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[approved_time]" type="text" value="{:$row.approved_time?datetime($row.approved_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Approved_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-approved_ip" class="form-control" name="row[approved_ip]" type="text" value="{$row.approved_ip|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

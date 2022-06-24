@@ -1,0 +1,244 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Exhibition_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-exhibition_id" data-rule="required" data-source="exhibition/index" class="form-control selectpage" name="row[exhibition_id]" type="text" value="{$row.exhibition_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_id" data-rule="required" data-source="hall/index" class="form-control selectpage" name="row[hall_id]" type="text" value="{$row.hall_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Coordinate_x')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-coordinate_x" class="form-control" name="row[coordinate_x]" type="number" value="{$row.coordinate_x|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Coordinate_y')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-coordinate_y" class="form-control" name="row[coordinate_y]" type="number" value="{$row.coordinate_y|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_widht')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_widht" class="form-control" name="row[booth_widht]" type="number" value="{$row.booth_widht|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_height')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_height" class="form-control" name="row[booth_height]" type="number" value="{$row.booth_height|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_area')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_area" class="form-control" name="row[booth_area]" type="text" value="{$row.booth_area|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_standard')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_standard" class="form-control" name="row[booth_standard]" type="text" value="{$row.booth_standard|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_num" class="form-control" name="row[booth_num]" type="text" value="{$row.booth_num|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_name" class="form-control" name="row[booth_name]" type="text" value="{$row.booth_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sales_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sales_status" class="form-control" name="row[sales_status]" type="number" value="{$row.sales_status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_tips')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_tips" class="form-control" name="row[booth_tips]" type="text" value="{$row.booth_tips|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_name" class="form-control" name="row[company_name]" type="text" value="{$row.company_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Category')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-category" class="form-control" name="row[category]" type="text" value="{$row.category|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Country')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-country" class="form-control" name="row[country]" type="text" value="{$row.country|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('State')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-state" class="form-control" name="row[state]" type="text" value="{$row.state|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Addr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-addr" class="form-control" name="row[addr]" type="text" value="{$row.addr|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Moble_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-moble_phone" class="form-control" name="row[moble_phone]" type="text" value="{$row.moble_phone|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-phone" class="form-control" name="row[phone]" type="text" value="{$row.phone|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Email')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-email" class="form-control" name="row[email]" type="text" value="{$row.email|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Webaddr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-webaddr" class="form-control" name="row[webaddr]" type="text" value="{$row.webaddr|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contacts')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contacts" class="form-control" name="row[contacts]" type="text" value="{$row.contacts|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fax')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fax" class="form-control" name="row[fax]" type="text" value="{$row.fax|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Position')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-position" class="form-control" name="row[position]" type="text" value="{$row.position|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_type" class="form-control" name="row[booth_type]" type="text" value="{$row.booth_type|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Open_angle')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-open_angle" class="form-control" name="row[open_angle]" type="number" value="{$row.open_angle|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_discount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_discount" class="form-control" name="row[booth_discount]" type="number" value="{$row.booth_discount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sales_distribution')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sales_distribution" class="form-control" name="row[sales_distribution]" type="text" value="{$row.sales_distribution|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_price" class="form-control" name="row[booth_price]" type="text" value="{$row.booth_price|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Angle_add')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-angle_add" class="form-control" name="row[angle_add]" type="text" value="{$row.angle_add|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Booth_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-booth_amount" class="form-control" name="row[booth_amount]" type="text" value="{$row.booth_amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Build_state')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-build_state" class="form-control" name="row[build_state]" type="text" value="{$row.build_state|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('China_abbreviate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-china_abbreviate" class="form-control" name="row[china_abbreviate]" type="text" value="{$row.china_abbreviate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('English_abbreviate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-english_abbreviate" class="form-control" name="row[english_abbreviate]" type="text" value="{$row.english_abbreviate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Xiongk_num_free')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-xiongk_num_free" class="form-control" name="row[xiongk_num_free]" type="number" value="{$row.xiongk_num_free|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Xiongk_num_change')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-xiongk_num_change" class="form-control" name="row[xiongk_num_change]" type="number" value="{$row.xiongk_num_change|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_assigned')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_assigned" class="form-control" name="row[is_assigned]" type="number" value="{$row.is_assigned|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Imp_buyernum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-imp_buyernum" class="form-control" name="row[imp_buyernum]" type="number" value="{$row.imp_buyernum|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Upload_batch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-upload_batch" class="form-control" name="row[upload_batch]" type="number" value="{$row.upload_batch|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

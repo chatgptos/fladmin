@@ -1,0 +1,142 @@
+<div id="app" v-cloak>
+	<div class="comment" v-if="dataList.length > 0">
+		<div class="title">
+			全部评论
+		</div>
+		<div class="item" v-for="(item, index) in dataList" :key="index">
+			<div class="portrait">
+				<img :src="item.user.avatar" >
+			</div>
+			<div class="sub">
+				<div class="name">
+					<div>{{item.user.nickname}}</div>
+					<div class="del" @click="handleDel('main', index)"><i class="fa fa-trash"></i></div>
+				</div>
+				<div class="text">
+					{{item.content}}
+				</div>
+				<div class="bar">
+					<div>{{item.created_text}}</div>
+					<div><i class="fa fa-thumbs-up"></i> {{item.like}}</div>
+				</div>
+				<div class="item" v-for="(child, keys) in item.childlist" :key="keys">
+					<div class="portrait">
+						<img :src="child.user.avatar" >
+					</div>
+					<div class="sub">
+						<div class="name">
+							<div>{{child.user.nickname}}</div>
+							<div class="del" @click="handleDel('child', index, keys)"><i class="fa fa-trash"></i></div>
+						</div>
+						<div class="text">
+							{{child.content}}
+						</div>
+						<div class="bar">
+							<div>{{child.created_text}}</div>
+							<div><i class="fa fa-thumbs-up"></i> {{child.like}}</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div v-else class="empty">
+		<div>
+			<img src="/assets/addons/flshop/img/default/default3x.png" draggable="true">
+			<div class="text">此作品还没有任何评论哦~</div>
+		</div>
+	</div>
+</div>
+
+<style lang="scss">
+	[v-cloak] {
+		display: none;
+	}
+	.comment .title{
+		font-size: 14px;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	.comment .item{
+		padding: 10px;
+		border-radius: 10px;
+		background-color: #f9f9f9;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 12px;
+	}
+	
+	.comment .item .portrait{
+		background-color: #f5f5f5;
+		border-radius: 1000px;
+		overflow: hidden;
+		width: 40px;
+		height: 40px;
+	}
+	.comment .item .portrait img{
+		width: 40px;
+		height: 40px;
+	}
+	.comment .item .sub{
+		width: calc(100% - 52px);
+	}
+	.comment .item .sub .name{
+		font-size: 13px;
+		color: #2c3e50;
+		font-weight: bold;
+		display: flex;
+		justify-content: space-between;
+	}
+	.comment .item .sub .name .del{
+		font-weight: initial;
+		font-size: 16px;
+	}
+	.comment .item .sub .text{
+		font-size: 13px;
+		line-height: 22px;
+		color: #565656;
+		text-align: justify;
+	}
+	.comment .item .sub .bar{
+		display: flex;
+		justify-content: space-between;
+		padding-top: 4px;
+		font-size: 13px;
+		color: #9195a3;
+	}
+	.comment .item .sub .item {
+		background-color: #e8ecef;
+		margin-top: 4px;
+		margin-bottom: 0;
+	}
+	
+	.comment .item .sub .item .portrait{
+		width: 30px;
+		height: 30px;
+	}
+	.comment .item .sub .item .portrait img{
+		width: 30px;
+		height: 30px;
+	}
+	.comment .item .sub .item .sub{
+		width: calc(100% - 42px);
+	} 
+	.empty{
+		margin-top: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.empty > div{
+		text-align: center;
+	}
+	.empty img{
+		width: 220px;
+		height: 220px;
+	}
+	.empty .text{
+		margin-top: 10px;
+		color: #95a5a6;
+	}
+</style>

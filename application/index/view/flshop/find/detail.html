@@ -1,0 +1,81 @@
+<!-- 类型:new=上新,want=种草,show=买家秀   ,live=直播,video=短视频-->
+<div class="post clearfix">
+	<div class="user-block">
+		<img class="img-circle img-bordered-sm" src="{$row.shop.avatar|cdnurl}">
+		<span class="username">
+			<a href="#">{$row.shop.shopname}</a>
+			<a href="#" class="pull-right btn-box-tool">{$row.created|datetime}</a>
+		</span>
+		<span class="description">创作号：{$row.user_no}</span>
+	</div>
+	<p>
+		{$row.content}
+	</p>
+
+	<div class="media">
+		{volist name="row.image" id="vo"}
+		<div class="item">
+			<img src="{$vo|cdnurl}">
+			{eq name="key" value="0"}
+				{eq name="row.type" value="video"}
+					<div class="play" data-id="{$row.video_id}" data-type="video"> <i class="fa fa-play-circle"></i> </div>
+				{/eq}
+				{eq name="row.type" value="live"}
+					<div class="play" data-id="{$row.live_id}" data-type="live"> <i class="fa fa-play-circle"></i> </div>
+				{/eq}
+			{/eq}
+		</div>
+		{/volist}
+	</div>
+
+	<ul class="list-inline">
+		<li><a href="#" class="link-black text-sm">浏览量 ({$row.views})</a></li>
+		<li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i>
+				点赞 ({$row.likes})</a></li>
+		<li class="pull-right">
+			<a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> 评论
+				({$row.comments})</a>
+		</li>
+	</ul>
+</div>
+<style type="text/css">
+	.list-inline {
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
+
+	.media {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.media .item {
+		position: relative;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		width: calc(100% / 3 - 10px);
+		border-radius: 8px;
+		overflow: hidden;
+		border: 1px solid #e8e8e8;
+	}
+
+	.media .item img {
+		width: 100%;
+		height: 395px;
+		object-fit: cover;
+	}
+
+	.media .item .play {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		font-size: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(0, 0, 0, .5);
+		box-shadow: 5px 5px 2px #888888;
+	}
+</style>

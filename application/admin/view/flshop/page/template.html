@@ -1,0 +1,177 @@
+<div class="alert alert-info-light">
+	<i class="fa fa-warning"></i> 使用技巧：除在模板管理中 新建模板，还可以在 页面管理 中将其他页面 发布为模板
+</div>
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs" data-field="type">
+            <li class="active"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="typeList" item="vo"}
+            <li><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+						<a href="javascript:;" 
+						data-area=["500px","400px"] 
+						class="btn btn-success btn-add {:$auth->check('flshop/page/add')?'':'hide'}"
+						title="{:__('新建模板')}" ><i class="fa fa-plus"></i> {:__('新建模板')}</a>
+                    </div>
+                    <table id="table" class="table table-striped table-hover" width="100%"> </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="itemtpl" type="text/html">
+	<div>
+		<div class="flshop_com">
+			<div class="main">
+				<div class="bg">
+				<% if(item.cover){ %>
+					<img src="<%=cdnurl(item.cover)%>">
+				<% }else{ %>
+					<img src="/api/flshop/common/thumbnail?text=<%=item.name%>">
+				<% } %>
+				</div>
+				<div class="mask"></div>
+				<div class="qrcode">
+					<img src="qrcode?size=150&url=<%=item.url%>">
+				</div>
+				<div class="operate">
+					<div class="text-center">
+						<div class="title">
+							<%=item.name%>
+						</div>
+						<div class="">
+							<a href="#" class="btn btn-xs1 btn-info btn-publish" data-id="<%=item.id%>"><i class="fa fa-telegram"></i> 使用</a>
+							<a href="#" class="btn btn-xs1 btn-primary btn-edit" data-id="<%=item.id%>"><i class="fa fa-pencil"></i> 编辑</a>
+							<a href="#" class="btn btn-xs1 btn-danger btn-del" data-id="<%=item.id%>"><i class="fa fa-times"></i> 删除</a>
+						</div>
+					</div>
+				</div>
+				<div class="info">
+					<small class="label bg-blue">首页</small> 
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<style type="text/css">
+	.table .row{
+		margin: 0;
+	}
+	.flshop_com {
+		position: relative;
+		width: 260px;
+		margin-top: 10px;
+		margin-right: 15px;
+		margin-bottom: 5px;
+		border-radius: 18px;
+		padding: 10px;
+		padding-top: 25px;
+		background-color: #f2f2f2;
+		transition: transform .2s ease-out
+	}
+	.flshop_com::after{
+		position: absolute;
+		content: '';
+		top: 10px;
+		left: 50%;
+		margin-left: -25px;
+		width: 50px;
+		height: 6px;
+		background-color: #e0e0e0;
+		border-radius: 10px;
+	}
+	.flshop_com:hover{
+		transform: translate(0,-10px)
+	}
+	.flshop_com .main {
+		position: relative;
+		overflow: hidden;
+		border-radius: 10px;
+		background-color: #ffffff;
+	}
+	.flshop_com .main .bg{
+		width: 100%;
+	}
+	.flshop_com .main .bg img{
+		width: 100%;
+		min-height: 400px;
+	}
+	.flshop_com .main .mask{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+	
+	.flshop_com .main:hover .mask
+	{
+		background-color: rgba(0,0,0,.6);
+	}
+	
+	.flshop_com .main:hover .qrcode {
+		top: 56px
+	}
+	.flshop_com .main .qrcode {
+		position: absolute;
+		left: 50%;
+		margin-left: -70px;
+		width: 140px;
+		height: 140px;
+		border-radius: 3px;
+		background: #fff;
+		top: -140px;
+		z-index: 5;
+		overflow: hidden;
+		transform-origin: center center;
+		transform: scale(0.9109);
+		transition: top .3s
+	}
+	.flshop_com .main .qrcode img {
+		width: 100%;
+		height: 100%;
+	}
+	.flshop_com .main:hover .operate{
+		display: flex;
+	}
+	.flshop_com .main .operate{
+		position: absolute;
+		top: 200px;
+		left: 0;
+		width: 100%;
+		display: none;
+		justify-content: center;
+		z-index: 3;
+	}
+	.flshop_com .main .operate .btn + .btn{
+		margin-left: 5px;
+	}
+	.flshop_com .main .operate .title{
+		margin-bottom: 12px;
+		font-size: 14px;
+		color: #ffffff;
+	}
+	
+	
+	.flshop_com .main .info{
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+	.flshop_com .main:hover .info{
+		display: none;
+	}
+</style>
