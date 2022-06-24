@@ -1,9 +1,9 @@
 {
-  "name": "fastadmin",
-  "description": "the fastest admin framework",
+  "name": "fladmin",
+  "description": "the fl admin framework",
   "main": "",
   "license": "Apache2.0",
-  "homepage": "https://www.fastadmin.net",
+  "homepage": "https://www.fladmin.net",
   "private": true,
   "dependencies": {
     "jquery": "^2.1.4",
